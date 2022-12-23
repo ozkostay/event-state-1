@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+// import Toolbar from './components/Toolbar';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+  const animals = [
+  { id: 1, animal: "Dog" },
+  { id: 2, animal: "Bird" },
+  { id: 3, animal: "Cat" },
+  { id: 4, animal: "Mouse" },
+  { id: 5, animal: "Horse" }
+  ];
+  
+  function onClicker(ee) {
+    let ccc = Math.random();
+    console.log('aaa', ccc);
+  }
+
+  const renderAnimals = animals.map(item => (
+    <button onClick={onClicker}>{item.animal}</button>
+  ));
+
+  return <ul>{renderAnimals}</ul>;
+  
 }
 
 export default App;
