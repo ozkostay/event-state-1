@@ -1,27 +1,31 @@
-// import Toolbar from './components/Toolbar';
-import './App.css';
+import React from "react";
+import Toolbar from './components/Toolbar'
+import Portfolio from "./components/Portfolio";
 
-function App() {
-  
-  const animals = [
-  { id: 1, animal: "Dog" },
-  { id: 2, animal: "Bird" },
-  { id: 3, animal: "Cat" },
-  { id: 4, animal: "Mouse" },
-  { id: 5, animal: "Horse" }
-  ];
-  
-  function onClicker(ee) {
-    let ccc = Math.random();
-    console.log('aaa', ccc);
-  }
+const portfolio = new Portfolio();
+const filters = [...portfolio.filters];
+const selected = portfolio.selected;
+const projects = portfolio.projects;
 
-  const renderAnimals = animals.map(item => (
-    <button onClick={onClicker}>{item.animal}</button>
-  ));
+const App = () => {
+  const func = (filter) => {
+    const arr = [...projects]; // .filter((item) => item.category === filter);
+    console.log(filter);
+    if (filter === 'All') {
+      return arr;
+    }
+    return arr.filter((item) => item.category === filter);
+  };
 
-  return <ul>{renderAnimals}</ul>;
-  
-}
+  return (
+    <>
+      <Toolbar 
+        filters={filters} 
+        selected={selected} 
+        onSelectFilter={func}
+      />
+    </>
+  );
+};
 
 export default App;
