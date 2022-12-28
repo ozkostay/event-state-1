@@ -1,6 +1,7 @@
 import React from "react";
-import Toolbar from './components/Toolbar'
+import Toolbar from './components/Toolbar';
 import Portfolio from "./components/Portfolio";
+import './App.css';
 
 const portfolio = new Portfolio();
 const filters = [...portfolio.filters];
